@@ -1,0 +1,19 @@
+<div class="container mt-5">
+  <div class="row  justify-content-center">
+    <div class="col-6">
+      <h1 class="text-center mb-5">Cerrar sesión</h1>
+      <div class="modalbg">
+        <div class="card-body">
+          <h5 class="card-title">¿Está seguro de que desea cerrar su sesión?</h5>
+          <br>
+          <p class="card-text">Si lo hace, deberá volver a iniciar sesión para acceder al sistema.</p>
+          <div class="text-center" style="display: flex; gap: 16px;">
+            <a href="#" class="button button__cancel" routerLink="/home">Cancelar</a>
+            <a href="#" class="button button__exit" routerLink="/login" (click)="logout()">Cerrar sesión</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

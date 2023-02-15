@@ -1,0 +1,37 @@
+<table class="table table-bordered table-striped">
+  <tbody>
+
+      <tr>
+          <th style="background-color: #6d5dfc; color: white;">Id</th>
+          <td>{{oUser?.id}}</td>
+      </tr>
+      <tr>
+        <th style="background-color: #6d5dfc; color: white;">DNI</th>
+        <td>{{oUser?.dni}}</td>
+    </tr>
+    <tr>
+      <th style="background-color: #6d5dfc; color: white;">Nombre</th>
+      <td>{{oUser?.nombre}}</td>
+  </tr>
+      <tr>
+          <th style="background-color: #6d5dfc; color: white;">Apellido 1</th>
+          <td>{{oUser?.apellido1}}</td>
+      </tr>
+      <tr>
+          <th style="background-color: #6d5dfc; color: white;">Apellido 2</th>
+          <td>{{oUser?.apellido2}}</td>
+      </tr>
+      <tr>
+          <th style="background-color: #6d5dfc; color: white;">Email</th>
+          <td>{{oUser?.email}}</td>
+      </tr>
+      <tr>
+          <th style="background-color: #6d5dfc; color: white;">Apodo</th>
+          <td>{{oUser?.nickname}}</td>
+      </tr>
+      <tr>
+          <th style="background-color: #6d5dfc; color: white;">Tipo de usuario</th>
+          <td>{{oUser?.tipousuario.id}} - {{oUser?.tipousuario.nombre}}</td>
+      </tr>
+  </tbody>
+</table>

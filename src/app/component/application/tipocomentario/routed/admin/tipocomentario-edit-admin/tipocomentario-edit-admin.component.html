@@ -1,0 +1,44 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col">
+      <h1 class="text-center mb-5">Editar tipocomentario</h1>
+
+      <form novalidate [formGroup]="oForm" *ngIf="oForm" (ngSubmit)="onSubmit()">
+
+        <div class="mb-3 row">
+          <label for="inputtipo" class="col-sm-2 col-form-label">Tipo</label>
+          <div class="col-sm-4 has-validation">
+            <input type="text" class="form-control" [ngClass]="{'is-valid' : oForm.controls.tipo.dirty && !oForm.controls.tipo.errors?.['required'] &&
+              oForm.controls.tipo.dirty && !oForm.controls.tipo.errors?.['minlength']
+                && oForm.controls.tipo.dirty && !oForm.controls.tipo.errors?.['maxlength'],
+                'is-invalid' :  oForm.controls.tipo.dirty &&  oForm.controls.tipo.errors?.['minlength']
+                ||  oForm.controls.tipo.dirty &&  oForm.controls.tipo.errors?.['maxlength'] ||
+                oForm.controls.tipo.dirty &&  oForm.controls.tipo.errors?.['required']}" id="inputtipo"
+              formControlName="tipo">
+            <div id="inputtipoFeedback" class="invalid-feedback"
+              *ngIf="oForm.controls.tipo.dirty &&  oForm.controls.tipo.errors?.['minlength']">
+              La longitud mínima es de 5 caracteres.
+            </div>
+            <div id="inputtipoFeedback" class="invalid-feedback"
+              *ngIf="oForm.controls.tipo.dirty &&  oForm.controls.tipo.errors?.['maxlength']">
+              La longitud máxima es de 10 caracteres.
+            </div>
+            <div id="inputtipoFeedback" class="invalid-feedback"
+              *ngIf="oForm.controls.tipo.dirty &&  oForm.controls.tipo.errors?.['required']">
+              El campo es obligatorio.
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary" [disabled]="oForm.invalid || !oForm.dirty">Guardar</button>
+
+
+
+      </form>
+
+    </div>
+  </div>
+</div>
+
+
+

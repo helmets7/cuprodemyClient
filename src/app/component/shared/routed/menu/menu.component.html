@@ -1,0 +1,61 @@
+<nav class="navbar navbar-expand-lg navbar-dark"  style="background-color: #0a0158;" *ngIf="ruta.url != '/login'"> <!-- 3551F0 // 091b82-->
+
+  <div class="container-fluid">
+
+    <a class="navbar-brand" style="color: #f4f7ff;"><img src="/assets/logocuprodemy.png" style="width: 100px;"></a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01"
+      aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarColor01" >
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="width: 100%;">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" routerLinkActive="active" routerLink="home">Home</a>
+        </li>
+        <li class="nav-item" *ngIf="!strUserName">
+          <a class="nav-link" aria-current="page" routerLinkActive="active" routerLink="login">Login</a>
+        </li>
+        <li class="nav-item" *ngIf="strTipousuario=='1'">
+          <a class="nav-link" aria-current="page" routerLinkActive="active"
+            routerLink="admin/user/plist">Usuarios</a>
+        </li>
+        <li class="nav-item" *ngIf="strTipousuario=='1'">
+            <a class="nav-link" aria-current="page" routerLinkActive="active"
+               routerLink="admin/tipousuario/plist">Tipo Usuario</a>
+        </li>
+        <li class="nav-item" *ngIf="strTipousuario=='1'">
+            <a class="nav-link" aria-current="page" routerLinkActive="active"
+              routerLink="admin/curso/plist">Cursos</a>
+        </li>
+        <li class="nav-item" *ngIf="strTipousuario=='1'">
+            <a class="nav-link" aria-current="page" routerLinkActive="active"
+              routerLink="admin/comentario/plist">Comentarios</a>
+        </li>
+        <li class="nav-item" *ngIf="strTipousuario=='1'">
+            <a class="nav-link" aria-current="page" routerLinkActive="active"
+              routerLink="admin/tipocomentario/plist">Tipo comentario</a>
+        </li>
+        <li class="nav-item" *ngIf="strTipousuario=='1'">
+            <a class="nav-link" aria-current="page" routerLinkActive="active"
+              routerLink="admin/leccion/plist">Leccion</a>
+        </li>
+
+        <li class="espacio"></li>
+
+        <li class="left">
+          <a class="nav-link" aria-current="page" routerLinkActive="active" [routerLink]="['/usuario','user','view', strUserId]" *ngIf="strUserName">{{strUserName}}</a>
+        </li>
+
+        <li class="nav-item" *ngIf="strUserName">
+          <a class="nav-link" aria-current="page" routerLinkActive="active" [routerLink]="['/logout']">Logout</a>
+        </li>
+      </ul>
+
+
+    </div>
+
+
+  </div>
+</nav>

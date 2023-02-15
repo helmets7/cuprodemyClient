@@ -1,0 +1,94 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col">
+      <h1 class="text-center mb-5 text-decoration-underline">Listado de comentarios</h1>
+      <div class="col-md text-end d-flex justify-content-center align-items-center mb-3 ">
+        <a [routerLink]="['/admin/comentario/new']" class="btn btn-success mx-3">Añadir comentario</a>
+        <app-search-unrouted [placeHolder]="'Buscar comentario'" (onSearch)="setFilter( $event )"></app-search-unrouted>
+        <app-dropdown-register-page class="mx-2" [PageSize]="responseFromServer?.numberOfElements"
+        (eeRpp)="this.setRpp($event)">
+      </app-dropdown-register-page>
+      </div>
+      <div class="col-md d-flex">
+        <app-pagination-unrouted [nPage]="responseFromServer?.number + 1" [nTotalPages]="responseFromServer?.totalPages"
+          (eePage)="setPage($event)"></app-pagination-unrouted>
+      </div>
+      <div class="d-flex justify-content-end mb-2 ">
+        <button class="btn btn-success" (click)="generateComentario()">Generar comentario aleatorio</button>
+      </div>
+      <div class="col-md text-start">
+        <h5 class="text-muted" *ngIf="strTermFilter!=''">Filtrando por {{strTermFilter}} (borrar para resetear)</h5>
+        <button class="btn btn-outline-danger" *ngIf="id_tipocomentarioFilter!=0" (click)="setFilterByTipocomentario(0)">
+          <i class="bi bi-x-circle"></i> Reset tipocomentario {{id_tipocomentarioFilter}} filter</button>
+          <h5 class="text-muted" *ngIf="strTermFilter!=''">Filtrando por {{strTermFilter}} (borrar para resetear)</h5>
+          <button class="btn btn-outline-danger" *ngIf="id_usuarioFilter!=0" (click)="setFilterByUsuario(0)">
+            <i class="bi bi-x-circle"></i> Reset usuario {{id_usuarioFilter}} filter</button>
+            <h5 class="text-muted" *ngIf="strTermFilter!=''">Filtrando por {{strTermFilter}} (borrar para resetear)</h5>
+            <button class="btn btn-outline-danger" *ngIf="id_cursoFilter!=0" (click)="setFilterByCurso(0)">
+              <i class="bi bi-x-circle"></i> Reset curso {{id_cursoFilter}} filter</button>
+      </div>
+      <div class="col-md text-end">
+        <h5 class="text-muted">Total de registros en la consulta {{responseFromServer?.totalElements}}</h5>
+      </div>
+      <table class="table table-bordered table-striped table-hover text-center">
+        <thead  style="background-color: #6d5dfc; color: white;">
+          <tr>
+            <th (click)="setOrder('id')">Id
+              <span *ngIf="sortField=='id'&&sortDirection=='asc'">🔼</span>
+              <span *ngIf="sortField=='id'&&sortDirection=='desc'">🔽</span>
+            </th>
+            <th (click)="setOrder('comentario')">Comentario
+              <span *ngIf="sortField=='comentario'&&sortDirection=='asc'">🔼</span>
+              <span *ngIf="sortField=='comentario'&&sortDirection=='desc'">🔽</span>
+            </th>
+            <th (click)="setOrder('firmatiempo')">Fecha y hora de subida
+              <span *ngIf="sortField=='firmatiempo'&&sortDirection=='asc'">🔼</span>
+              <span *ngIf="sortField=='firmatiempo'&&sortDirection=='desc'">🔽</span>
+            </th>
+            <th (click)="setOrder('id_usuario')">Usuario
+              <span *ngIf="sortField=='id_usuario'&&sortDirection=='asc'">🔼</span>
+              <span *ngIf="sortField=='id_usuario'&&sortDirection=='desc'">🔽</span>
+            </th>
+            <th (click)="setOrder('id_tipocomentario')">Tipo de comentario
+              <span *ngIf="sortField=='id_tipocomentario'&&sortDirection=='asc'">🔼</span>
+              <span *ngIf="sortField=='id_tipocomentario'&&sortDirection=='desc'">🔽</span>
+            </th>
+            <th (click)="setOrder('id_curso')">Curso
+              <span *ngIf="sortField=='id_curso'&&sortDirection=='asc'">🔼</span>
+              <span *ngIf="sortField=='id_curso'&&sortDirection=='desc'">🔽</span>
+            </th>
+            <th>Acciones</th>
+            </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let comentario of responseFromServer?.content">
+        <td>{{comentario.id}}</td>
+        <td>{{comentario.comentario}}</td>
+        <td>{{comentario.firmatiempo}}</td>
+        <td (click)="setFilterByUsuario(comentario.usuario.id)">
+          {{comentario.usuario.id}} ({{comentario.usuario.nombre}})</td>
+        <td (click)="setFilterByTipocomentario(comentario.tipocomentario.id)">
+          {{comentario.tipocomentario.id}} ({{comentario.tipocomentario.tipo}})</td>
+        <td (click)="setFilterByCurso(comentario.curso.id)">
+          {{comentario.curso.id}} ({{comentario.curso.nombre}})</td>
+        <td>
+
+
+          <div class="btn-group "  role="group" aria-label="Herramientas">
+            <button class="btn btn-sm btn-info" [routerLink]="['/admin/comentario/view',comentario.id]">
+              <i class="bi bi-eye-fill"></i>
+            </button>
+            <button class="btn btn-sm btn-secondary" [routerLink]="['/admin/comentario/edit',comentario.id]">
+              <i class="bi bi-pencil-fill"></i>
+            </button>
+            <button class="btn btn-sm btn-danger" [routerLink]="['/admin/comentario/remove',comentario.id]">
+              <i class="bi bi-trash-fill"></i>
+            </button>
+          </div>
+        </td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</div>

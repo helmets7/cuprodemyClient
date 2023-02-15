@@ -1,0 +1,159 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col">
+      <h1 class="text-center mb-5">Editar curso</h1>
+
+      <form novalidate [formGroup]="oForm" *ngIf="oForm" (ngSubmit)="onSubmit()">
+
+        <div class="mb-3 row">
+          <label for="inputnombre" class="col-sm-2 col-form-label">Nombre</label>
+          <div class="col-sm-4 has-validation">
+            <input type="text" class="form-control" [ngClass]="{'is-valid' : oForm.controls.nombre.dirty && !oForm.controls.nombre.errors?.['required'] &&
+              oForm.controls.nombre.dirty && !oForm.controls.nombre.errors?.['minlength']
+                && oForm.controls.nombre.dirty && !oForm.controls.nombre.errors?.['maxlength'],
+                'is-invalid' :  oForm.controls.nombre.dirty &&  oForm.controls.nombre.errors?.['minlength']
+                ||  oForm.controls.nombre.dirty &&  oForm.controls.nombre.errors?.['maxlength'] ||
+                oForm.controls.nombre.dirty &&  oForm.controls.nombre.errors?.['required']}" id="inputnombre"
+              formControlName="nombre">
+            <div id="inputnombreFeedback" class="invalid-feedback"
+              *ngIf="oForm.controls.nombre.dirty &&  oForm.controls.nombre.errors?.['minlength']">
+              La longitud mínima es de 5 caracteres.
+            </div>
+            <div id="inputnombreFeedback" class="invalid-feedback"
+              *ngIf="oForm.controls.nombre.dirty &&  oForm.controls.nombre.errors?.['maxlength']">
+              La longitud máxima es de 10 caracteres.
+            </div>
+            <div id="inputnombreFeedback" class="invalid-feedback"
+              *ngIf="oForm.controls.nombre.dirty &&  oForm.controls.nombre.errors?.['required']">
+              El campo es obligatorio.
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3 row">
+          <label for="inputdescripcion" class="col-sm-2 col-form-label">Descripción</label>
+          <div class="col-sm-4 has-validation">
+            <input type="text" class="form-control" [ngClass]="{'is-valid' : oForm.controls.descripcion.dirty && !oForm.controls.descripcion.errors?.['required'] &&
+              oForm.controls.descripcion.dirty && !oForm.controls.descripcion.errors?.['minlength']
+                && oForm.controls.descripcion.dirty && !oForm.controls.descripcion.errors?.['maxlength'],
+                'is-invalid' :  oForm.controls.descripcion.dirty &&  oForm.controls.descripcion.errors?.['minlength']
+                ||  oForm.controls.descripcion.dirty &&  oForm.controls.descripcion.errors?.['maxlength'] ||
+                oForm.controls.descripcion.dirty &&  oForm.controls.descripcion.errors?.['required']}"
+              id="inputdescripcion" formControlName="descripcion">
+            <div id="inputdescripcionFeedback" class="invalid-feedback"
+              *ngIf="oForm.controls.descripcion.dirty &&  oForm.controls.descripcion.errors?.['minlength']">
+              La longitud mínima es de 5 caracteres.
+            </div>
+            <div id="inputdescripcionFeedback" class="invalid-feedback"
+              *ngIf="oForm.controls.descripcion.dirty &&  oForm.controls.descripcion.errors?.['maxlength']">
+              La longitud máxima es de 10 caracteres.
+            </div>
+            <div id="inputdescripcionFeedback" class="invalid-feedback"
+              *ngIf="oForm.controls.descripcion.dirty &&  oForm.controls.descripcion.errors?.['required']">
+              El campo es obligatorio.
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3 row">
+          <label for="inputminiatura" class="col-sm-2 col-form-label">Miniatura</label>
+          <div class="col-sm-4 has-validation">
+            <input type="text" class="form-control" [ngClass]="{'is-valid' : oForm.controls.miniatura.dirty && !oForm.controls.miniatura.errors?.['required'] &&
+              oForm.controls.miniatura.dirty && !oForm.controls.miniatura.errors?.['minlength']
+                && oForm.controls.miniatura.dirty && !oForm.controls.miniatura.errors?.['maxlength'],
+                'is-invalid' :  oForm.controls.miniatura.dirty &&  oForm.controls.miniatura.errors?.['minlength']
+                ||  oForm.controls.miniatura.dirty &&  oForm.controls.miniatura.errors?.['maxlength'] ||
+                oForm.controls.miniatura.dirty &&  oForm.controls.miniatura.errors?.['required']}" id="inputminiatura"
+              formControlName="miniatura">
+            <div id="inputminiaturaFeedback" class="invalid-feedback"
+              *ngIf="oForm.controls.miniatura.dirty &&  oForm.controls.miniatura.errors?.['minlength']">
+              La longitud mínima es de 5 caracteres.
+            </div>
+            <div id="inputminiaturaFeedback" class="invalid-feedback"
+              *ngIf="oForm.controls.miniatura.dirty &&  oForm.controls.miniatura.errors?.['maxlength']">
+              La longitud máxima es de 10 caracteres.
+            </div>
+            <div id="inputminiaturaFeedback" class="invalid-feedback"
+              *ngIf="oForm.controls.miniatura.dirty &&  oForm.controls.miniatura.errors?.['required']">
+              El campo es obligatorio.
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3 row">
+          <label for="inputvideoUrl" class="col-sm-2 col-form-label">VideoUrl</label>
+          <div class="col-sm-4 has-validation">
+            <input type="text" class="form-control" [ngClass]="{'is-valid' : oForm.controls.videoUrl.dirty && !oForm.controls.videoUrl.errors?.['required'] &&
+              oForm.controls.videoUrl.dirty && !oForm.controls.videoUrl.errors?.['minlength']
+                && oForm.controls.videoUrl.dirty && !oForm.controls.videoUrl.errors?.['maxlength'],
+                'is-invalid' :  oForm.controls.videoUrl.dirty &&  oForm.controls.videoUrl.errors?.['minlength']
+                ||  oForm.controls.videoUrl.dirty &&  oForm.controls.videoUrl.errors?.['maxlength'] ||
+                oForm.controls.videoUrl.dirty &&  oForm.controls.videoUrl.errors?.['required']}" id="inputvideoUrl"
+              formControlName="videoUrl">
+            <div id="inputvideoUrlFeedback" class="invalid-feedback"
+              *ngIf="oForm.controls.videoUrl.dirty &&  oForm.controls.videoUrl.errors?.['minlength']">
+              La longitud mínima es de 5 caracteres.
+            </div>
+            <div id="inputvideoUrlFeedback" class="invalid-feedback"
+              *ngIf="oForm.controls.videoUrl.dirty &&  oForm.controls.videoUrl.errors?.['maxlength']">
+              La longitud máxima es de 10 caracteres.
+            </div>
+            <div id="inputvideoUrlFeedback" class="invalid-feedback"
+              *ngIf="oForm.controls.videoUrl.dirty &&  oForm.controls.videoUrl.errors?.['required']">
+              El campo es obligatorio.
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3 row">
+          <label for="inputduracion" class="col-sm-2 col-form-label">Duración</label>
+          <div class="col-sm-4 has-validation">
+            <input type="time" step="2" class="form-control" [ngClass]="{'is-valid' : oForm.controls.duracion.dirty && !oForm.controls.duracion.errors?.['required'] &&
+              oForm.controls.duracion.dirty && !oForm.controls.duracion.errors?.['minlength']
+                && oForm.controls.duracion.dirty && !oForm.controls.duracion.errors?.['maxlength'],
+                'is-invalid' :  oForm.controls.duracion.dirty &&  oForm.controls.duracion.errors?.['minlength']
+                ||  oForm.controls.duracion.dirty &&  oForm.controls.duracion.errors?.['maxlength'] ||
+                oForm.controls.duracion.dirty &&  oForm.controls.duracion.errors?.['required']}" id="inputduracion"
+              formControlName="duracion">
+            <div id="inputduracionFeedback" class="invalid-feedback"
+              *ngIf="oForm.controls.duracion.dirty &&  oForm.controls.duracion.errors?.['minlength']">
+              La longitud mínima es de 5 caracteres.
+            </div>
+            <div id="inputduracionFeedback" class="invalid-feedback"
+              *ngIf="oForm.controls.duracion.dirty &&  oForm.controls.duracion.errors?.['maxlength']">
+              La longitud máxima es de 10 caracteres.
+            </div>
+            <div id="inputduracionFeedback" class="invalid-feedback"
+              *ngIf="oForm.controls.duracion.dirty &&  oForm.controls.duracion.errors?.['required']">
+              El campo es obligatorio.
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary" [disabled]="oForm.invalid || !oForm.dirty">Guardar</button>
+
+
+      </form>
+    </div>
+  </div>
+  </div>
+
+
+  <div class="modal fade" [id]="mimodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{modalTitle}}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+          <app-leccion-finder (closeEvent)="closeLeccionModal($event)"></app-leccion-finder>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>

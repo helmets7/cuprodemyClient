@@ -1,0 +1,19 @@
+.navbar-nav > li{
+  padding-left:5px;
+  padding-right:5px;
+}
+
+.left{
+  margin-left: auto;
+}
+
+
+@media (max-width: 1000px) {
+  .left{
+    margin-left: 0;
+  }
+  .espacio{
+    height: 20px;
+  }
+}
+

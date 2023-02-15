@@ -1,0 +1,85 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col">
+      <h1 class="text-center mb-5 text-decoration-underline">Listado de cursos</h1>
+      <div class="col-md text-end d-flex justify-content-center align-items-center mb-3 ">
+        <a [routerLink]="['/admin/curso/new']" class="btn btn-success mx-3">Añadir curso</a>
+        <app-search-unrouted [placeHolder]="'Buscar curso'" (onSearch)="setFilter( $event )"></app-search-unrouted>
+        <app-dropdown-register-page class="mx-2" [PageSize]="responseFromServer?.numberOfElements"
+        (eeRpp)="this.setRpp($event)">
+      </app-dropdown-register-page>
+      </div>
+      <div class="col-md d-flex">
+        <app-pagination-unrouted [nPage]="responseFromServer?.number + 1" [nTotalPages]="responseFromServer?.totalPages"
+          (eePage)="setPage($event)"></app-pagination-unrouted>
+      </div>
+      <div class="col-md text-end">
+        <h5 class="text-muted">Total de registros en la consulta {{responseFromServer?.totalElements}}</h5>
+      </div>
+
+      <div>
+        <table class="table table-bordered table-striped table-hover text-center">
+          <thead  style="background-color: #6d5dfc; color: white;">
+            <tr>
+              <th (click)="setOrder('id')" >ID
+                <span *ngIf="sortField=='id'&&sortDirection=='asc'">🔼</span>
+                <span *ngIf="sortField=='id'&&sortDirection=='desc'">🔽</span>
+              </th>
+              <th (click)="setOrder('nombre')">Nombre
+                <span *ngIf="sortField=='nombre'&&sortDirection=='asc'">🔼</span>
+                <span *ngIf="sortField=='nombre'&&sortDirection=='desc'">🔽</span>
+              </th>
+              <th (click)="setOrder('descripcion')">Descripción
+                <span *ngIf="sortField=='descripcion'&&sortDirection=='asc'">🔼</span>
+                <span *ngIf="sortField=='descripcion'&&sortDirection=='desc'">🔽</span>
+              </th>
+              <th (click)="setOrder('miniatura')">Miniatura
+                <span *ngIf="sortField=='miniatura'&&sortDirection=='asc'">🔼</span>
+                <span *ngIf="sortField=='miniatura'&&sortDirection=='desc'">🔽</span>
+              </th>
+              <th (click)="setOrder('videoUrl')">VideoUrl
+                <span *ngIf="sortField=='videoUrl'&&sortDirection=='asc'">🔼</span>
+                <span *ngIf="sortField=='videoUrl'&&sortDirection=='desc'">🔽</span>
+              </th>
+              <th (click)="setOrder('duracion')">Duración
+                <span *ngIf="sortField=='duracion'&&sortDirection=='asc'">🔼</span>
+                <span *ngIf="sortField=='duracion'&&sortDirection=='desc'">🔽</span>
+              </th>
+
+              <th>Comentarios</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let curso of responseFromServer?.content">
+              <td>{{curso.id}} </td>
+              <td>{{curso.nombre}}</td>
+              <td style="overflow: hidden;">{{curso.descripcion}}</td>
+              <td>{{curso.miniatura}}</td>
+              <td>{{curso.videoUrl}}</td>
+              <td>{{curso.duracion}}</td>
+
+
+                <td><button class="btn-sm" [routerLink]="['/admin','comentario','plist','curso',curso.id]"
+                  [disabled]="curso.comentarios<=0 ">{{curso.comentarios}}</button></td>
+                <td>
+                <div class="btn-group "  role="group" aria-label="Herramientas">
+                  <button class="btn btn-sm btn-info" [routerLink]="['/admin/curso/view',curso.id]">
+                    <i class="bi bi-eye-fill"></i>
+                  </button>
+                  <button class="btn btn-sm btn-secondary" [routerLink]="['/admin/curso/edit',curso.id]">
+                    <i class="bi bi-pencil-fill"></i>
+                  </button>
+                  <button class="btn btn-sm btn-danger" [routerLink]="['/admin/curso/remove',curso.id]">
+                    <i class="bi bi-trash-fill"></i>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+</div>

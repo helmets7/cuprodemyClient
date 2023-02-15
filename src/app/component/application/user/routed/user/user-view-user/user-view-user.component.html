@@ -1,0 +1,14 @@
+<div class="container mt-5">
+  <div class="row">
+      <div class="col">
+            <app-user-detail-usuario-unrouted [id]="id"></app-user-detail-usuario-unrouted>
+      </div>
+
+      <!-- crear boton que me lleve a user-edit-user-->
+
+      <div class="edit-button btn " >
+
+        <a [routerLink]="['/usuario','user','edit', strUserId]">Editar perfil<i class="bi bi-pencil-fill"></i></a>
+      </div>
+  </div>
+</div>

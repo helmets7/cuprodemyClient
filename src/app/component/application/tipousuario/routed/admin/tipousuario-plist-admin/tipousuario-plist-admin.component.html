@@ -1,0 +1,43 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col">
+      <h1 class="text-center mb-5 text-decoration-underline">Listado de tipousuario</h1>
+      <div class="col-md text-end d-flex justify-content-center align-items-center mb-3 ">
+        <app-search-unrouted [placeHolder]="'Buscar tipousuario'" (onSearch)="setFilter( $event )"></app-search-unrouted>
+        <app-dropdown-register-page class="mx-2" [PageSize]="responseFromServer?.numberOfElements"
+        (eeRpp)="this.setRpp($event)">
+      </app-dropdown-register-page>
+      </div>
+      <div class="col-md d-flex">
+        <app-pagination-unrouted [nPage]="responseFromServer?.number + 1" [nTotalPages]="responseFromServer?.totalPages"
+          (eePage)="setPage($event)"></app-pagination-unrouted>
+      </div>
+      <div class="col-md text-end">
+        <h5 class="text-muted">Total de registros en la consulta {{responseFromServer?.totalElements}}</h5>
+      </div>
+      <table class="table table-bordered table-striped table-hover col-3 mx-auto text-center">
+        <thead  style="background-color: #6d5dfc; color: white;">
+          <tr>
+            <th (click)="setOrder('id')" >ID
+              <span *ngIf="sortField=='id'&&sortDirection=='asc'">🔼</span>
+              <span *ngIf="sortField=='id'&&sortDirection=='desc'">🔽</span>
+            </th>
+            <th (click)="setOrder('nombre')">Nombre
+              <span *ngIf="sortField=='nombre'&&sortDirection=='asc'">🔼</span>
+              <span *ngIf="sortField=='nombre'&&sortDirection=='desc'">🔽</span>
+            </th>
+            <th>Usuarios</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let tipousuario of responseFromServer?.content">
+            <td>{{tipousuario.id}} </td>
+            <td>{{tipousuario.nombre}}</td>
+            <td><button class="btn-sm" [routerLink]="['/admin','user','plist','tipousuario',tipousuario.id]"
+              [disabled]="tipousuario.usuarios<=0 ">{{tipousuario.usuarios}}</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

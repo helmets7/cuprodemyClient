@@ -1,0 +1,29 @@
+<table class="table table-bordered table-striped">
+  <tbody>
+
+      <tr>
+          <th style="background-color: #6d5dfc; color: white;">Id</th>
+          <td>{{oComentario?.id}}</td>
+      </tr>
+      <tr>
+        <th style="background-color: #6d5dfc; color: white;">Comentario</th>
+        <td>{{oComentario?.comentario}}</td>
+    </tr>
+      <tr>
+        <th style="background-color: #6d5dfc; color: white;">Firmatiempo</th>
+        <td>{{oComentario?.firmatiempo}}</td>
+    </tr>
+      <tr>
+          <th style="background-color: #6d5dfc; color: white;">Usuario</th>
+          <td>{{oComentario?.usuario.id}} - {{oComentario?.usuario.nombre}}</td>
+      </tr>
+      <tr>
+        <th style="background-color: #6d5dfc; color: white;">Tipocomentario</th>
+        <td>{{oComentario?.tipocomentario.id}} - {{oComentario?.tipocomentario.tipo}}</td>
+    </tr>
+    <tr>
+      <th style="background-color: #6d5dfc; color: white;">Curso</th>
+      <td>{{oComentario?.curso.id}} - {{oComentario?.curso.nombre}}</td>
+  </tr>
+  </tbody>
+</table>

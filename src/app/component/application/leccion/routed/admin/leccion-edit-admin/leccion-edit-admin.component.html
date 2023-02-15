@@ -1,0 +1,158 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col">
+      <h1 class="text-center mb-5">Editar lección</h1>
+
+      <form novalidate [formGroup]="oForm" *ngIf="oForm" (ngSubmit)="onSubmit()">
+
+        <div class="mb-3 row">
+          <label for="inputdescripcion" class="col-sm-2 col-form-label">Descripción</label>
+          <div class="col-sm-4 has-validation">
+            <input type="text" class="form-control" [ngClass]="{'is-valid' : oForm.controls.descripcion.dirty && !oForm.controls.descripcion.errors?.['required'] &&
+              oForm.controls.descripcion.dirty && !oForm.controls.descripcion.errors?.['minlength']
+                && oForm.controls.descripcion.dirty && !oForm.controls.descripcion.errors?.['maxlength'],
+                'is-invalid' :  oForm.controls.descripcion.dirty &&  oForm.controls.descripcion.errors?.['minlength']
+                ||  oForm.controls.descripcion.dirty &&  oForm.controls.descripcion.errors?.['maxlength'] ||
+                oForm.controls.descripcion.dirty &&  oForm.controls.descripcion.errors?.['required']}" id="inputdescripcion"
+              formControlName="descripcion">
+            <div id="inputdescripcionFeedback" class="invalid-feedback"
+              *ngIf="oForm.controls.descripcion.dirty &&  oForm.controls.descripcion.errors?.['minlength']">
+              La longitud mínima es de 5 caracteres.
+            </div>
+            <div id="inputdescripcionFeedback" class="invalid-feedback"
+              *ngIf="oForm.controls.descripcion.dirty &&  oForm.controls.descripcion.errors?.['maxlength']">
+              La longitud máxima es de 10 caracteres.
+            </div>
+            <div id="inputdescripcionFeedback" class="invalid-feedback"
+              *ngIf="oForm.controls.descripcion.dirty &&  oForm.controls.descripcion.errors?.['required']">
+              El campo es obligatorio.
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3 row">
+          <label for="inputrecurso" class="col-sm-2 col-form-label">Recurso</label>
+          <div class="col-sm-4 has-validation">
+            <input type="text" class="form-control" [ngClass]="{'is-valid' : oForm.controls.recurso.dirty && !oForm.controls.recurso.errors?.['required'] &&
+              oForm.controls.recurso.dirty && !oForm.controls.recurso.errors?.['minlength']
+                && oForm.controls.recurso.dirty && !oForm.controls.recurso.errors?.['maxlength'],
+                'is-invalid' :  oForm.controls.recurso.dirty &&  oForm.controls.recurso.errors?.['minlength']
+                ||  oForm.controls.recurso.dirty &&  oForm.controls.recurso.errors?.['maxlength'] ||
+                oForm.controls.recurso.dirty &&  oForm.controls.recurso.errors?.['required']}" id="inputrecurso"
+              formControlName="recurso">
+            <div id="inputrecursoFeedback" class="invalid-feedback"
+              *ngIf="oForm.controls.recurso.dirty &&  oForm.controls.recurso.errors?.['minlength']">
+              La longitud mínima es de 5 caracteres.
+            </div>
+            <div id="inputrecursoFeedback" class="invalid-feedback"
+              *ngIf="oForm.controls.recurso.dirty &&  oForm.controls.recurso.errors?.['maxlength']">
+              La longitud máxima es de 10 caracteres.
+            </div>
+            <div id="inputrecursoFeedback" class="invalid-feedback"
+              *ngIf="oForm.controls.recurso.dirty &&  oForm.controls.recurso.errors?.['required']">
+              El campo es obligatorio.
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="mb-3 row">
+          <label for="inputorden" class="col-sm-2 col-form-label">Orden</label>
+          <div class="col-sm-4 has-validation">
+            <input type="text" class="form-control" id="inputorden" formControlName="orden" [ngClass]="{'is-valid' :
+              oForm.controls.orden.dirty && !oForm.controls.orden.errors?.['required'] &&
+              oForm.controls.orden.dirty && !oForm.controls.orden.errors?.['minlength']
+                && oForm.controls.orden.dirty && !oForm.controls.orden.errors?.['maxlength'],
+                'is-invalid' :  oForm.controls.orden.dirty &&  oForm.controls.orden.errors?.['minlength']
+                ||  oForm.controls.orden.dirty &&  oForm.controls.orden.errors?.['maxlength'] ||
+                oForm.controls.orden.dirty &&  oForm.controls.orden.errors?.['required']}">
+            <div class="invalid-feedback"
+              *ngIf="oForm.controls.orden.dirty &&  oForm.controls.orden.errors?.['minlength']">
+              La longitud mínima es de 5 caracteres.
+            </div>
+            <div class="invalid-feedback"
+              *ngIf="oForm.controls.orden.dirty &&  oForm.controls.orden.errors?.['maxlength']">
+              La longitud máxima es de 10 caracteres.
+            </div>
+            <div class="invalid-feedback"
+              *ngIf="oForm.controls.orden.dirty &&  oForm.controls.orden.errors?.['required']">
+              El campo es obligatorio.
+            </div>
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="inputCurso" class="col-sm-2 col-form-label">Curso</label>
+          <div class="col-sm-6 has-validation">
+            <div class="input-group">
+              <span class="input-group-text">{{cursoDescription}}</span>
+              <input type="text" class="form-control" formControlName="id_curso"
+                (input)="updateCursoDescription(oForm.controls.id_curso.value)" [ngClass]="{'is-valid' :
+                  oForm.controls.id_curso?.dirty && !oForm.controls.id_curso.errors?.['required'] &&
+                   !oForm.controls.id_curso.errors?.['pattern'] && !oForm.controls.id_curso.errors?.['incorrect'],
+                    'is-invalid' :  (oForm.controls.id_curso?.dirty &&  oForm.controls.id_curso.errors?.['required'] )
+                    ||
+                    ( oForm.controls.id_curso?.dirty &&  oForm.controls.id_curso.errors?.['incorrect'])
+                  }">
+              <button type="button" class="btn btn-primary" (click)="openModalFindCurso()">Buscar</button>
+            </div>
+            <div class="text-danger"
+              *ngIf="oForm.controls.id_curso?.dirty &&  oForm.controls.id_curso.errors?.['required']">
+              El campo es obligatorio.
+            </div>
+            <div class="text-danger"
+              *ngIf="oForm.controls.id_curso?.dirty &&  oForm.controls.id_curso.errors?.['pattern']">
+              El campo ha de ser un entrero de máximo 6 dígitos.
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary" [disabled]="oForm.invalid || !oForm.dirty">Guardar</button>
+
+
+
+      </form>
+
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" [id]="mimodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{modalTitle}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        {{modalContent}}
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="findcurso" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{modalTitle}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <app-curso-finder (closeEvent)="closeCursoModal($event)"></app-curso-finder>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+

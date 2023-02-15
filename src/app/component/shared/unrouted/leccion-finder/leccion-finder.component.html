@@ -1,0 +1,49 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col">
+      <h1 class="text-center mb-5">Listado de lecciones</h1>
+      <div class="col-md text-end d-flex justify-content-center align-items-center mb-3">
+        <app-search-unrouted [placeHolder]="'Buscar leccion'" (onSearch)="setFilter( $event )"></app-search-unrouted>
+        <app-dropdown-register-page class="mx-2" [PageSize]="this.getPageRegister()" (eeRpp)="this.setRpp($event)">
+        </app-dropdown-register-page>
+      </div>
+      <div class="col-md text-start">
+        <h5 class="text-muted" *ngIf="strTermFilter!=''">Filtrando por {{strTermFilter}} (borrar para resetear)</h5>
+        <button class="btn btn-outline-danger" *ngIf="id_cursoFilter!=0" (click)="setFilterByCurso(0)">
+          <i class="bi bi-x-circle"></i> Reset curso {{id_cursoFilter}} filter</button>
+
+      </div>
+      <div class="col-md text-center">
+        <app-pagination-unrouted [nPage]="getPageNumber() + 1" [nTotalPages]="this.getPagesCount()"
+          (eePage)="setPage($event)"></app-pagination-unrouted>
+      </div>
+      <table class="table table-bordered table-striped table-hover">
+        <thead>
+          <tr>
+              <th (click)="setOrder('id')">ID
+
+                </th>
+                <th (click)="setOrder('nombre')">Nombre
+                </th>
+            <th>Cursos</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let leccion of this.getPlistContent()">
+            <td>{{leccion.id}}</td>
+            <td>{{leccion.descripcion}}</td>
+            <td (click)="setFilterByCurso(leccion.curso.id)">
+              {{leccion.curso.id}} ({{leccion.curso.descripcion}})</td>
+            <td>
+              <div class="btn-group" role="group" aria-label="Herramientas">
+                <button class="btn btn-sm btn-primary" (click)="selectionLeccion(leccion.id)">
+                  Seleccionar
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

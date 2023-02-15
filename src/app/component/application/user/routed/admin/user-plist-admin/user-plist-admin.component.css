@@ -1,0 +1,21 @@
+th{
+  user-select: none;
+  cursor: pointer;
+}
+
+table{
+  table-layout: fixed;
+  width:100%;
+}
+
+td{
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.acciones{
+  display: flex;
+  gap: 5px;
+}
+

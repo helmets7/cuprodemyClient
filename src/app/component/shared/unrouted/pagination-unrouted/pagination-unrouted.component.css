@@ -1,0 +1,6 @@
+
+
+.pagination>li.active>a {
+  background: #6d5dfc;
+  color: #fff;
+}

@@ -1,0 +1,25 @@
+
+
+<div *ngIf="curso !== undefined" class="grid">
+
+<div class="info">
+  <h4>{{curso.descripcion}}</h4>
+</div>
+
+  <div class="video">
+
+    <iframe width="640" height="360" [src]="safeURL" ></iframe>
+
+
+  </div>
+
+
+
+
+
+  <app-leccion-plist-usuario class="lecciones" style="width: 100%;" [id]="id"></app-leccion-plist-usuario>
+
+  <app-comentario-plist-usuario class="comentarios" style="width: 100%;" [id]="id" [id_curso]="curso.id" ></app-comentario-plist-usuario>
+
+
+</div>

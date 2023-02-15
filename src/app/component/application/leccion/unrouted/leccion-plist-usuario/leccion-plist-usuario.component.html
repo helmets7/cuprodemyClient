@@ -1,0 +1,37 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col">
+
+      <div class="col-md d-flex">
+        <app-pagination-unrouted [nPage]="responseFromServer?.number + 1" [nTotalPages]="responseFromServer?.totalPages"
+          (eePage)="setPage($event)"></app-pagination-unrouted>
+      </div>
+      <table class="table table-bordered table-striped table-hover text-center table-responsive-lg table-responsive-sm table-responsive-xl table-responsive-md">
+        <thead  style="background-color: #6d5dfc; color: white;">
+          <tr>
+            <th (click)="setOrder('descripcion')">Descripción
+              <span *ngIf="sortField=='descripcion'&&sortDirection=='asc'">🔼</span>
+              <span *ngIf="sortField=='descripcion'&&sortDirection=='desc'">🔽</span>
+            </th>
+            <th (click)="setOrder('recurso')">Recurso
+              <span *ngIf="sortField=='recurso'&&sortDirection=='asc'">🔼</span>
+              <span *ngIf="sortField=='recurso'&&sortDirection=='desc'">🔽</span>
+            </th>
+            <th (click)="setOrder('orden')">Orden
+              <span *ngIf="sortField=='orden'&&sortDirection=='asc'">🔼</span>
+              <span *ngIf="sortField=='orden'&&sortDirection=='desc'">🔽</span>
+            </th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let leccion of responseFromServer?.content">
+            <td>{{leccion.descripcion}}</td>
+            <td>{{leccion.recurso}}</td>
+            <td>{{leccion.orden}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

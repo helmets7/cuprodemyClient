@@ -1,0 +1,42 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col">
+      <h1 class="text-center mb-5">Listado de tipocomentarios</h1>
+      <div class="col-md text-end d-flex justify-content-center align-items-center mb-3">
+        <app-search-unrouted [placeHolder]="'Buscar tipocomentario'" (onSearch)="setFilter( $event )"></app-search-unrouted>
+        <app-dropdown-register-page class="mx-2" [PageSize]="this.getPageRegister()" (eeRpp)="this.setRpp($event)">
+        </app-dropdown-register-page>
+      </div>
+      <div class="col-md text-center">
+        <app-pagination-unrouted [nPage]="getPageNumber() + 1" [nTotalPages]="this.getpagesCount()"
+          (eePage)="setPage($event)"></app-pagination-unrouted>
+      </div>
+      <table class="table table-bordered table-striped table-hover">
+        <thead>
+          <tr>
+              <th (click)="setOrder('id')">ID
+
+                </th>
+                <th (click)="setOrder('tipo')">Tipo
+                </th>
+            <th>Comentarios</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let tipocomentario of this.getPlistContent()">
+            <td>{{tipocomentario.id}}</td>
+            <td>{{tipocomentario.tipo}}</td>
+            <td>{{tipocomentario.comentarios}}</td>
+            <td>
+              <div class="btn-group" role="group" aria-label="Herramientas">
+                <button class="btn btn-sm btn-primary" (click)="selectionTipocomentario(tipocomentario.id)">
+                  Seleccionar
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

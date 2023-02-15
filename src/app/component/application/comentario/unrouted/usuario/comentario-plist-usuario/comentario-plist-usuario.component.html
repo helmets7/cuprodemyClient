@@ -1,0 +1,37 @@
+<div class="container mt-5">
+  <div class="col">
+
+   <div style="display: flex;">
+      <button class="button button__primary" (click)="cambiarTipoComentario(1)">Aportes</button>
+      <button class="button button__primary" (click)="cambiarTipoComentario(2)">Preguntas</button>
+      <app-pagination-unrouted [nPage]="responseFromServer?.number + 1" [nTotalPages]="responseFromServer?.totalPages"
+        (eePage)="setPage($event)"></app-pagination-unrouted>
+    </div>
+
+<section id="comments" >
+
+  <h1 *ngIf="comentariosTipo === 1">Aportes</h1>
+
+  <h1 *ngIf="comentariosTipo === 2">Preguntas</h1>
+
+  <div class="comment" *ngFor="let comentario of getData()">
+    <div class="username" style="display: flex; justify-content: space-between; width: calc(100% -  32px);">
+
+      <div>{{comentario.usuario.nickname}}</div>
+      <div>{{comentario.firmatiempo}}</div>
+
+    </div>
+    <img src="https://www.une.edu.au/__data/assets/image/0005/97178/blank-avatar.png" class="avatar" alt="user image" />
+    <p>{{comentario.comentario}}</p>
+  </div>
+
+
+</section>
+
+
+
+
+
+
+  </div>
+</div>
