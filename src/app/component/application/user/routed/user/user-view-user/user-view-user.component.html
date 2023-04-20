@@ -1,14 +1,16 @@
 <div class="container mt-5">
   <div class="row">
       <div class="col">
-            <h2>Hola, <app-user-detail-usuario-unrouted [id]="id"></app-user-detail-usuario-unrouted></h2>
+
+        <div class="topPanel">
+          <h2>Hola, <app-user-detail-usuario-unrouted [id]="id"></app-user-detail-usuario-unrouted></h2>
+
+          <a [routerLink]="['/usuario','user','edit', strUserId]" class="edit-button">Editar perfil</a>
+        </div>
       </div>
 
-      <!-- crear boton que me lleve a user-edit-user-->
 
-      <div class="edit-button btn" >
-        <a [routerLink]="['/usuario','user','edit', strUserId]" class="edit">Editar perfil</a>
-      </div>
+
 
 
       <div>
