@@ -1,25 +1,44 @@
+<div *ngIf="curso !== undefined" class="container">
 
+  <h4 class="title">{{curso.descripcion}}</h4>
 
-<div *ngIf="curso !== undefined" class="grid">
+  <div class="course">
 
-<div class="info">
-  <h4>{{curso.descripcion}}</h4>
-</div>
-
-  <div class="video">
-
-    <iframe width="640" height="360" [src]="safeURL" ></iframe>
-
+    <div class="course_video"> <iframe width="890" height="500" [src]="safeURL"></iframe> </div>
+    <div class="course_links">
+      <h5>Recursos</h5>
+      <app-leccion-plist-usuario class="lecciones" style="width: 100%;" [id]="id"></app-leccion-plist-usuario>
+    </div>
 
   </div>
 
+  <button class="suscribeButton" (click)="suscribeCourse()" *ngIf="isSuscribed==false">Suscribirse</button>
+  <button class="unsuscribeButton" (click)="unsubscribeCourse()" *ngIf="isSuscribed==true">Cancelar Suscripción</button>
+
+
+<div class="course_comments">
+  <div class="commentSendBox">
+    <input type="text" [(ngModel)]="newComentario" class="inputComment">
+    <button (click)="sendComment()" class="sendButton"><i class="bi bi-send"></i></button>
+  </div>
+</div>
 
 
 
 
-  <app-leccion-plist-usuario class="lecciones" style="width: 100%;" [id]="id"></app-leccion-plist-usuario>
 
-  <app-comentario-plist-usuario class="comentarios" style="width: 100%;" [id]="id" [id_curso]="curso.id" ></app-comentario-plist-usuario>
+
+
+
+
+
+  <app-comentario-plist-usuario class="comentarios" style="width: 100%;" [id]="id" [id_curso]="curso.id"
+    (sendIdCurso)="handleTipoComentario($event)"></app-comentario-plist-usuario>
+
+
+
+
+
 
 
 </div>

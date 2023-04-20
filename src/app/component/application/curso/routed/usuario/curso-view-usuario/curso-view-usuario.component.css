@@ -1,62 +1,87 @@
-.info{
-  grid-area: item4;
+
+.container{
+  max-width: 1300px;
+  margin: auto;
+
   display: flex;
-  align-items: center;
-  padding: 20px;
-/*   justify-content: center;*/
-  text-decoration-line: underline;
-  
+  flex-direction: column;
+  gap: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
-.video {
-  grid-area: item1;
+.course{
   display: flex;
-  align-items: center;
+  gap: 20px;
+}
+
+
+
+.inputComment{
+
+  outline: none;
+  line-height: 1.5rem;
+  font-size: 0.875rem;
+  color: rgb(66, 66, 66);
+  padding: 0.5rem 0.875rem;
+  background-color: rgb(255 255 255 / 0.05);
+  border: 1px solid rgba(59, 59, 59, 0.363);
+  border-radius: 0.375rem;
+  flex: 1 1 auto;
+}
+
+
+.commentSendBox{
+  display: flex;
   padding: 20px;
-  justify-content: center;
+  max-width: 80%;
+  margin: auto;
+  gap: 10px ;
 
 }
 
-.lecciones {
-  grid-area: item2;
-
-  width: 60vw;
-
+.sendButton{
+  color: white;
+  font-weight: 600;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  padding: 0.625rem 0.875rem;
+  background-color: rgb(99 102 241);
+  border-radius: 0.375rem;
+  border: none;
+  outline: none;
 }
 
-.comentarios {
-  grid-area: item3;
-
-  width: 40vw;
+.suscribeButton{
+  color: white;
+  font-weight: 600;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  padding: 0.625rem 0.875rem;
+  background-color: rgb(99 102 241);
+  border-radius: 0.375rem;
+  border: none;
+  outline: none;
 }
 
-
-
-.grid {
-  display: grid;
-  grid-template-areas:
-    'item4 item3'
-    'item1 item3'
-    'item2 item3'
-  ;
-  grid-gap: 10px;
-  width: 100vw;
-  min-height: 94  vh;
-
-}
-
-@media (max-width: 1068px) {
-  .grid {
-    grid-template-areas:
-      'item4'
-      'item1'
-      'item2'
-      'item3'
-    ;
-  }
+.suscribeButton:hover{
+  background-color: rgb(99, 241, 130, 0.8);
 }
 
 
 
+.unsuscribeButton{
+  color: white;
+  font-weight: 600;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  padding: 0.625rem 0.875rem;
+  background-color: rgb(99 102 241);
+  border-radius: 0.375rem;
+  border: none;
+  outline: none;
+}
 
-
+.unsuscribeButton:hover{
+  background-color: rgb(241, 99, 99, 0.8);
+}

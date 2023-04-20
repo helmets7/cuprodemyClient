@@ -20,6 +20,7 @@ export class ComentarioService {
 
   ) {
     this.url = `${baseURL}${this.entityURL}`;
+    console.log(this.url);
   }
 
   getComentarioPlist(page: number, size: number, termino: string,
