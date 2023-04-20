@@ -1,14 +1,37 @@
 <div class="container mt-5">
   <div class="row">
       <div class="col">
-            <app-user-detail-usuario-unrouted [id]="id"></app-user-detail-usuario-unrouted>
+            <h2>Hola, <app-user-detail-usuario-unrouted [id]="id"></app-user-detail-usuario-unrouted></h2>
       </div>
 
       <!-- crear boton que me lleve a user-edit-user-->
 
-      <div class="edit-button btn " >
+      <div class="edit-button btn" >
+        <a [routerLink]="['/usuario','user','edit', strUserId]" class="edit">Editar perfil</a>
+      </div>
 
-        <a [routerLink]="['/usuario','user','edit', strUserId]">Editar perfil<i class="bi bi-pencil-fill"></i></a>
+
+      <div>
+        <h2>Tus cursos:</h2>
+
+        <table >
+
+          <tr *ngFor="let suscribedCourse of suscribedCourses">
+            <td>
+              <a [routerLink]="['/curso','view', suscribedCourse.curso.id]">{{suscribedCourse.curso.id}}</a>
+            </td>
+            <td>{{suscribedCourse.curso.nombre}}</td>
+            <td>{{suscribedCourse.curso.descripcion}}</td>
+            <td>{{suscribedCourse.curso.duracion}}</td>
+
+            <td><button class="cancelSuscription" (click)="cancelSuscription(suscribedCourse.id)"> Cancelar Suscripción</button></td>
+          </tr>
+
+
+        </table>
+
+
+
       </div>
   </div>
 </div>

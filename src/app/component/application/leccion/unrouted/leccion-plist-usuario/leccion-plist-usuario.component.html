@@ -6,7 +6,7 @@
         <app-pagination-unrouted [nPage]="responseFromServer?.number + 1" [nTotalPages]="responseFromServer?.totalPages"
           (eePage)="setPage($event)"></app-pagination-unrouted>
       </div>
-      <table class="table table-bordered table-striped table-hover text-center table-responsive-lg table-responsive-sm table-responsive-xl table-responsive-md">
+      <table class="table table-bordered table-striped table-hover text-center table-responsive-lg table-responsive-sm table-responsive-xl table-responsive-md" >
         <thead  style="background-color: #6d5dfc; color: white;">
           <tr>
             <th (click)="setOrder('descripcion')">Descripción
@@ -27,7 +27,7 @@
         <tbody>
           <tr *ngFor="let leccion of responseFromServer?.content">
             <td>{{leccion.descripcion}}</td>
-            <td>{{leccion.recurso}}</td>
+            <td><a href={{leccion.recurso}}><i class="bi bi-link"></i></a></td>
             <td>{{leccion.orden}}</td>
           </tr>
         </tbody>

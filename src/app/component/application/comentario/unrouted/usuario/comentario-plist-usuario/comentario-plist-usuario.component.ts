@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IComentario } from 'src/app/model/comentario-interface';
 import { IPage } from 'src/app/model/generic';
@@ -27,6 +27,8 @@ export class ComentarioPlistUsuarioComponent implements OnInit {
   comentariosTipo = 1;
 
   @Input() id_curso: number;
+
+  @Output() sendIdCurso = new EventEmitter<number>();
 
   constructor(
     private oComentarioService: ComentarioService,
@@ -74,6 +76,7 @@ export class ComentarioPlistUsuarioComponent implements OnInit {
   cambiarTipoComentario(tipo: number){
     this.comentariosTipo = tipo;
     this.setFilterByTipocomentario(tipo);
+    this.sendIdCurso.emit(tipo);
   }
 
 
