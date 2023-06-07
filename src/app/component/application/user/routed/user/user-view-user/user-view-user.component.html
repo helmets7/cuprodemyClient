@@ -3,7 +3,7 @@
       <div class="col">
 
         <div class="topPanel">
-          <h2>Hola, <app-user-detail-usuario-unrouted [id]="id"></app-user-detail-usuario-unrouted></h2>
+          <h2>Hola,<app-user-detail-usuario-unrouted [id]="id"></app-user-detail-usuario-unrouted></h2>
 
           <a [routerLink]="['/usuario','user','edit', strUserId]" class="edit-button">Editar perfil</a>
         </div>
@@ -14,14 +14,12 @@
 
 
       <div>
-        <h2>Tus cursos:</h2>
+        <h4>Tus cursos:</h4>
 
         <table >
 
           <tr *ngFor="let suscribedCourse of suscribedCourses">
-            <td>
-              <a [routerLink]="['/curso','view', suscribedCourse.curso.id]">{{suscribedCourse.curso.id}}</a>
-            </td>
+            <td [routerLink]="['/curso','view', suscribedCourse.curso.id]">{{suscribedCourse.curso.id}}</td>
             <td>{{suscribedCourse.curso.nombre}}</td>
             <td>{{suscribedCourse.curso.descripcion}}</td>
             <td>{{suscribedCourse.curso.duracion}}</td>

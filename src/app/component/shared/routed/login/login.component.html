@@ -36,6 +36,9 @@
                     <a class="ssolink" href="#" (click)="loginVisitor('visitor', 'cuprodemy')">Continuar como invitado</a>
                   </div>
 
+                  <br>
+                  <p>Sepa que al iniciar sesión está confirmando nuestros <u style="color: blue" (click)="openModal()">Términos y Condiciones</u></p>
+
                 </form>
               </div>
             </div>
@@ -46,6 +49,28 @@
                 <span><a href="#">Privacy & terms</a></span>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+    </div>
+
+    <div class="modal fade" id="suscribeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Información</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Términos y Condiciones</p>
+            <p>AVISO DE COOKIES Utilizamos cookies para asegurarnos de brindarte la mejor experiencia en nuestro sitio web. Al continuar utilizando nuestro sitio, aceptas nuestro uso de cookies.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
           </div>
         </div>
       </div>

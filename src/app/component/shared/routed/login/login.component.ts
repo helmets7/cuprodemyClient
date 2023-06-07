@@ -6,7 +6,7 @@ import { IUserBean2Form } from "src/app/model/tipo-usuario.interface";
 import { DecodeService } from "src/app/service/decode.service";
 import { EmitEvent, Events, SessionService } from "src/app/service/session.service";
 
-
+declare let bootstrap : any;
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -15,6 +15,7 @@ import { EmitEvent, Events, SessionService } from "src/app/service/session.servi
 export class LoginComponent implements OnInit {
 
   oFormularioLogin: FormGroup<IUserBean2Form>;
+  suscribemodal: any
 
   constructor(
     protected oRouter: Router,
@@ -52,6 +53,17 @@ export class LoginComponent implements OnInit {
         }
       })
   }
+
+
+  openModal(){
+
+    this.suscribemodal = new bootstrap.Modal(document.getElementById("suscribeModal"), { //pasar el myModal como parámetro
+      keyboard: false
+    })
+    this.suscribemodal.show()
+
+  }
+
 
 
   loginVisitor(user, pass) {

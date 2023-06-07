@@ -14,6 +14,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { IUser } from 'src/app/model/user-interface';
 
+declare let bootstrap : any;
 @Component({
   selector: 'app-curso-view-usuario',
   templateUrl: './curso-view-usuario.component.html',
@@ -36,6 +37,12 @@ export class CursoViewUsuarioComponent implements OnInit {
   isSuscribed = false;
 
   courseIDG = 0;
+
+  suscribemodal: any
+  suscribeMessage: string = ""
+  linksuscribedcourses: string = ""
+
+
 
   constructor(
     private cursoService: CursoService,
@@ -72,7 +79,13 @@ export class CursoViewUsuarioComponent implements OnInit {
 
 
 
+
+
+
+
   }
+
+
 
 
 
@@ -176,7 +189,8 @@ export class CursoViewUsuarioComponent implements OnInit {
       }
     );
 
-
+    this.linksuscribedcourses = "Ver tus cursos"
+    this.openModal("Te has suscrito al curso.")
 
   }
 
@@ -186,19 +200,39 @@ export class CursoViewUsuarioComponent implements OnInit {
       .request('delete', 'http://localhost:8082/usuario_curso/' + this.courseIDG, )
       .subscribe(
         (response) => {
-          console.log('Funciono al finl' + response);
+          this.getIsSuscribed()
+
         },
         (error) => {
           console.error(error);
         }
       );
+      this.linksuscribedcourses = ""
 
+    this.openModal("Te has desuscrito del curso.")
 
-    this.getIsSuscribed()
 
   }
 
 
+
+
+  openModal(message:string){
+
+    this.suscribeMessage = message
+    this.suscribemodal = new bootstrap.Modal(document.getElementById("suscribeModal"), { //pasar el myModal como parámetro
+      keyboard: false
+    })
+    this.suscribemodal.show()
+
+  }
+
+
+
+  goProfile(){
+    this.suscribemodal.hide();
+    this.oRouter.navigate(['/usuario','user','view', this.userId]);
+  }
 
 
 

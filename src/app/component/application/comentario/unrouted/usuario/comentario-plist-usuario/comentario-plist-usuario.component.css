@@ -70,6 +70,12 @@
   box-shadow: inset 0.2rem 0.2rem 1rem #5b0eeb, inset -0.2rem -0.2rem 1rem #8abdff;
 }
 
+.button__primary:focus {
+  box-shadow: inset 0.2rem 0.2rem 1rem #5b0eeb, inset -0.2rem -0.2rem 1rem #8abdff;
+  background: #5749ce;
+}
 .button p{
   color: white;
 }
+
+  
