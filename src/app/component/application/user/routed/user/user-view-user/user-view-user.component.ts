@@ -56,7 +56,7 @@ export class UserViewUserComponent implements OnInit {
 
 getAllCursos() {
 
-  this.http.get('http://localhost:8082/usuario_curso').subscribe(
+  this.http.get('https://cuprodemy-api.up.railway.app/usuario_curso').subscribe(
     (response:iContent) => {
 
       this.suscribedCourses = response.content.filter(element => element.usuario.id == this.strUserId)
@@ -71,7 +71,7 @@ getAllCursos() {
 
 cancelSuscription(id: number) {
 
-  this.http.delete('http://localhost:8082/usuario_curso/' + id).subscribe(
+  this.http.delete('https://cuprodemy-api.up.railway.app/usuario_curso/' + id).subscribe(
     (response) => {
 
       this.getAllCursos()

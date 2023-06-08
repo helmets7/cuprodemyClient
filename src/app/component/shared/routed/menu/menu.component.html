@@ -44,8 +44,10 @@
 
         <li class="espacio"></li>
 
-        <li class="left">
-          <a class="nav-link" aria-current="page" routerLinkActive="active" [routerLink]="['/usuario','user','view', strUserId]" *ngIf="strUserName">{{strUserName}}</a>
+        <li class="left" >
+          <div *ngIf="strUserName != 'visitor'">
+            <a class="nav-link" aria-current="page" routerLinkActive="active" [routerLink]="['/usuario','user','view', strUserId]" *ngIf="strUserName">{{strUserName}}</a>
+          </div>
         </li>
 
         <li class="nav-item" *ngIf="strUserName">

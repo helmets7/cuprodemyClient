@@ -90,7 +90,7 @@ export class CursoViewUsuarioComponent implements OnInit {
 
 
   getIsSuscribed() {
-    this.http.get('http://localhost:8082/usuario_curso').subscribe(
+    this.http.get('https://cuprodemy-api.up.railway.app/usuario_curso').subscribe(
       (response:iContent) => {
 
         const courses = response.content.filter(element => (element.usuario.id == this.userId && element.curso.id == this.id))
@@ -152,7 +152,7 @@ export class CursoViewUsuarioComponent implements OnInit {
       curso: { id: this.id },
     };
 
-    this.http.post('http://localhost:8082/comentario', data).subscribe(
+    this.http.post('https://cuprodemy-api.up.railway.app/comentario', data).subscribe(
       (response) => {
         this.cursoService
         .getOne(this.rutaActiva.snapshot.params['id'])
@@ -179,7 +179,7 @@ export class CursoViewUsuarioComponent implements OnInit {
 
 
 
-    this.http.post('http://localhost:8082/usuario_curso', data).subscribe(
+    this.http.post('https://cuprodemy-api.up.railway.app/usuario_curso', data).subscribe(
       (response) => {
         this.getIsSuscribed()
 
@@ -197,7 +197,7 @@ export class CursoViewUsuarioComponent implements OnInit {
   unsubscribeCourse() {
 
     this.http
-      .request('delete', 'http://localhost:8082/usuario_curso/' + this.courseIDG, )
+      .request('delete', 'https://cuprodemy-api.up.railway.app/usuario_curso/' + this.courseIDG, )
       .subscribe(
         (response) => {
           this.getIsSuscribed()
