@@ -15,10 +15,12 @@ h1 {
     letter-spacing: -1px;
 }
 
-a {
+
+a{
   color: #5469d4;
   text-decoration: unset;
 }
+
 
 .login-root {
     background: #fff;
@@ -179,6 +181,7 @@ a.ssolink {
     display: block;
     text-align: center;
     font-weight: 600;
+    cursor: pointer;
 }
 .footer-link span {
     font-size: 14px;
